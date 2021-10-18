@@ -1,9 +1,9 @@
 
+from cloudinary.models import CloudinaryField
+from django.conf import settings
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
-from django.conf import settings
-from cloudinary.models import CloudinaryField
 
 
 class Customer(models.Model):
@@ -97,17 +97,16 @@ class Order(models.Model):
         return self.customer.__str__()
 
 class Food(models.Model):
-    indian = 'Indian Food'
-    south = 'South Food'
-    gujarati = 'Gujarati Food'
-    punjabi = 'PunjabiFood'
+    Tunisia = 'Tunisia Food'
+    Ghana = 'Ghana Food'
+    Somalian = 'Somalian Food'
+    Kenyan = 'Kenyan Food'
     fast = 'Food'
-    
     COURSE = (
-        (indian,indian),
-        (south,south),
-        (gujarati,gujarati),
-        (punjabi,punjabi),
+        (Tunisia,Tunisia),
+        (Ghana,Ghana),
+        (Somalian,Somalian ),
+        ( Kenyan,Kenyan),
         (fast,fast),
     )
 
@@ -150,6 +149,8 @@ class OrderContent(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
 
 class Cart(models.Model):
+    image = CloudinaryField('image')
+    amount = models.IntegerField(default=1)
     quantity = models.IntegerField(default=1)
     food = models.ForeignKey(Food, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

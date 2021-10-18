@@ -71,10 +71,10 @@ def menu(request):
     cuisine = request.GET.get('cuisine')
     print(cuisine)
     if cuisine is not None:
-        if ((cuisine == "Gujarati") or (cuisine == "Punjabi")):
+        if ((cuisine == "Somalian") or (cuisine == "Kenyan")):
             foods = Food.objects.filter(status="Enabled", course=cuisine)
-        elif(cuisine == "south"):
-            foods = Food.objects.filter(status="Enabled", course="South Indian")
+        elif(cuisine == "Ghana"):
+            foods = Food.objects.filter(status="Enabled", course="Tunisia")
         elif(cuisine == "fast"):
             foods = Food.objects.filter(course="Fast")
     else:
@@ -251,9 +251,9 @@ def food_details(request, foodID):
     return render(request, 'user/single.html', {'food':food})
 
 @login_required
-def addTocart(request, foodID, userID):
-    food = Food.objects.get(id=foodID)
-    user = User.objects.get(id=userID)
+def addTocart(request, username):
+    food = Food.objects.get(username=username)
+    user = User.objects.get(username=username)
     cart = Cart.objects.create(food=food, user=user)
     cart.save()
     return redirect('booking:cart')
