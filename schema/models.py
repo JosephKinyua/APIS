@@ -117,7 +117,7 @@ class Food(models.Model):
         (disabled, disabled),
         (enabled, enabled),
     )
-
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=250)
     course = models.CharField(max_length = 50, choices = COURSE)
     status = models.CharField(max_length=50, choices=STATUS)
