@@ -11,10 +11,13 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
-import django_heroku
-import dj_database_url
-from decouple import config,Csv
 from pathlib import Path
+import cloudinary
+import cloudinary.api
+import cloudinary.uploader
+import dj_database_url
+import django_heroku
+from decouple import Csv, config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,6 +49,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_framework_simplejwt',
     'rest_framework',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -124,7 +128,11 @@ REST_FRAMEWORK = {
     )
 }
 
-
+cloudinary.config( 
+  cloud_name = "dohcjt1gt", 
+  api_key = "663935144137727", 
+  api_secret = "Unqgy11Txqnb2rzS_iAMLjLnz3A" 
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

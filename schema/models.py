@@ -3,6 +3,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.conf import settings
+from cloudinary.models import CloudinaryField
 
 
 class Customer(models.Model):
@@ -123,7 +124,7 @@ class Food(models.Model):
     status = models.CharField(max_length=50, choices=STATUS)
     content_description = models.TextField()
     price = models.FloatField()
-    image = models.ImageField('image')
+    image = CloudinaryField('image')
     location = models.CharField(max_length=200, blank=True, null=True)
     num_order = models.IntegerField(default=0)
 
@@ -160,7 +161,7 @@ class DeliveryBoy(models.Model):
 class Post(models.Model):
   title = models.CharField(max_length=144)
   description = models.TextField()
-  image = models.ImageField('image')
+  image = CloudinaryField('image')
   posted_on = models.DateTimeField(auto_now_add=True)
   user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete = models.CASCADE)
   
