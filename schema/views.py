@@ -339,74 +339,93 @@ def post(request):
 
 
 # APIView
-
+#  List-------------------------------------------------------------------------------------------------
 class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-class PostDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
+
 
 class CustomerList(generics.ListCreateAPIView):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
-class CustomerDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Customer.objects.all()
-    serializer_class = CustomerSerializer
+
 
 class OrderList(generics.ListCreateAPIView):
-    queryset = Order.objects.all()
-    serializer_class = OrderSerializer
-class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
 
 class StaffList(generics.ListCreateAPIView):
     queryset = Staff.objects.all()
     serializer_class = StaffSerializer
-class StaffDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Staff.objects.all()
-    serializer_class = StaffSerializer    
+  
 
 class FoodList(generics.ListCreateAPIView):
     queryset = Food.objects.all()
     serializer_class = FoodSerializer
-class FoodDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Food.objects.all()
-    serializer_class = FoodSerializer
+
 
 class CommentList(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Comment.objects.all()
-    serializer_class = CommentSerializer    
+   
 
 class DataList(generics.ListCreateAPIView):
     queryset = Data.objects.all()
     serializer_class = DataSerializer
-class DataDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Data.objects.all()
-    serializer_class = DataSerializer    
+ 
 
 class OrderContentList(generics.ListCreateAPIView):
     queryset = OrderContent.objects.all()
     serializer_class = OrderContentSerializer
-class OrderContentDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = OrderContent.objects.all()
-    serializer_class = OrderContentSerializer   
+  
 
 class CartList(generics.ListCreateAPIView):
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
-class CartDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Cart.objects.all()
-    serializer_class = CartSerializer     
+  
 
 class DeliveryBoyList(generics.ListCreateAPIView):
     queryset = DeliveryBoy.objects.all()
     serializer_class = DeliveryBoySerializer
-    
+
+
+# Details---------------------------------------------------------------------------------------------
 class DeliveryBoyDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = DeliveryBoy.objects.all()
     serializer_class = DeliveryBoySerializer  
+
+class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+class CustomerDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
+
+class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+class StaffDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Staff.objects.all()
+    serializer_class = StaffSerializer 
+
+class FoodDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Food.objects.all()
+    serializer_class = FoodSerializer 
+
+class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer 
+
+class OrderContentDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = OrderContent.objects.all()
+    serializer_class = OrderContentSerializer 
+
+class DataDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Data.objects.all()
+    serializer_class = DataSerializer   
+
+class CartDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer   
