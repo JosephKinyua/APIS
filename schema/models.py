@@ -157,6 +157,17 @@ class Cart(models.Model):
     food = models.ForeignKey(Food, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
+    @classmethod
+    def display_cart(cls):
+        items = cls.objects.all().order_by('-id')
+        return items
+
+    def save_cart(self):
+        self.save()
+
+    def delete_cart(self):
+        self.delete()
+
 class DeliveryBoy(models.Model):
     order= models.ForeignKey(Order, on_delete=models.CASCADE)
     delivery_boy = models.ForeignKey(Staff, on_delete=models.CASCADE)
