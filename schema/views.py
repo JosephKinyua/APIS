@@ -346,66 +346,86 @@ class PostList(generics.ListCreateAPIView):
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    lookup_field = "id"
 
 class CustomerList(generics.ListCreateAPIView):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
+
 class CustomerDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
+    lookup_field = "id"
 
 class OrderList(generics.ListCreateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+
 class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+    lookup_field = "id"
 
 class StaffList(generics.ListCreateAPIView):
     queryset = Staff.objects.all()
     serializer_class = StaffSerializer
+
 class StaffDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Staff.objects.all()
-    serializer_class = StaffSerializer    
+    serializer_class = StaffSerializer
+    lookup_field = "id"    
 
 class FoodList(generics.ListCreateAPIView):
     queryset = Food.objects.all()
     serializer_class = FoodSerializer
+
 class FoodDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Food.objects.all()
     serializer_class = FoodSerializer
+    lookup_field = "id"
 
 class CommentList(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comment.objects.all()
-    serializer_class = CommentSerializer    
+    serializer_class = CommentSerializer
+    lookup_field = "id"    
 
 class DataList(generics.ListCreateAPIView):
     queryset = Data.objects.all()
     serializer_class = DataSerializer
+
 class DataDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Data.objects.all()
-    serializer_class = DataSerializer    
+    serializer_class = DataSerializer
+    lookup_field = "id"    
 
 class OrderContentList(generics.ListCreateAPIView):
     queryset = OrderContent.objects.all()
     serializer_class = OrderContentSerializer
+
 class OrderContentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = OrderContent.objects.all()
-    serializer_class = OrderContentSerializer   
+    serializer_class = OrderContentSerializer 
+    lookup_field = "id"  
 
 class CartList(generics.ListCreateAPIView):
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
+
 class CartDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Cart.objects.all()
-    serializer_class = CartSerializer     
+    serializer_class = CartSerializer
+    lookup_field = "id"
+
 
 class DeliveryBoyList(generics.ListCreateAPIView):
     queryset = DeliveryBoy.objects.all()
     serializer_class = DeliveryBoySerializer
+    
 class DeliveryBoyDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = DeliveryBoy.objects.all()
-    serializer_class = DeliveryBoySerializer  
+    serializer_class = DeliveryBoySerializer
+    lookup_field = "id"  
