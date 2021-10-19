@@ -268,6 +268,7 @@ def delete_item(request, ID):
 def cart(request):
     user = User.objects.get(id=request.user.id)
     items = Cart.objects.filter(user=user)
+    items.delete()
     total = 0
     for item in items:
         total += item.food.sale_price
