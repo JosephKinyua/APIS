@@ -340,74 +340,172 @@ def post(request):
 
 # APIView
 
-class CartList(generics.ListCreateAPIView):
-    queryset = Cart.objects.all()
-    serializer_class = CartSerializer
-class CartDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Cart.objects.all()
-    serializer_class = CartSerializer
-
 class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+
+    def perform_create(self, serializer):
+        return serializer.save(owner=self.request.user)
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)
+
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)
 
 class CustomerList(generics.ListCreateAPIView):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
+
+    def perform_create(self, serializer):
+        return serializer.save(owner=self.request.user)
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)
+
 class CustomerDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)
 
 class OrderList(generics.ListCreateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+
+    def perform_create(self, serializer):
+        return serializer.save(owner=self.request.user)
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)
+
 class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
 
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)
+
 class StaffList(generics.ListCreateAPIView):
     queryset = Staff.objects.all()
     serializer_class = StaffSerializer
+
+    def perform_create(self, serializer):
+        return serializer.save(owner=self.request.user)
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)
+
 class StaffDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Staff.objects.all()
-    serializer_class = StaffSerializer    
+    serializer_class = StaffSerializer 
+
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)   
 
 class FoodList(generics.ListCreateAPIView):
     queryset = Food.objects.all()
     serializer_class = FoodSerializer
+
+    def perform_create(self, serializer):
+        return serializer.save(owner=self.request.user)
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)
+
 class FoodDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Food.objects.all()
     serializer_class = FoodSerializer
 
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)
+
 class CommentList(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+    def perform_create(self, serializer):
+        return serializer.save(owner=self.request.user)
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)
+
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comment.objects.all()
-    serializer_class = CommentSerializer    
+    serializer_class = CommentSerializer  
+
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)  
 
 class DataList(generics.ListCreateAPIView):
     queryset = Data.objects.all()
     serializer_class = DataSerializer
+
+    def perform_create(self, serializer):
+        return serializer.save(owner=self.request.user)
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)
+
 class DataDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Data.objects.all()
-    serializer_class = DataSerializer    
+    serializer_class = DataSerializer 
+
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)   
 
 class OrderContentList(generics.ListCreateAPIView):
     queryset = OrderContent.objects.all()
     serializer_class = OrderContentSerializer
+
+    def perform_create(self, serializer):
+        return serializer.save(owner=self.request.user)
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)
+
 class OrderContentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = OrderContent.objects.all()
     serializer_class = OrderContentSerializer   
+
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)
 
      
 
 class DeliveryBoyList(generics.ListCreateAPIView):
     queryset = DeliveryBoy.objects.all()
     serializer_class = DeliveryBoySerializer
+
+    def perform_create(self, serializer):
+        return serializer.save(owner=self.request.user)
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)
+
 class DeliveryBoyDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = DeliveryBoy.objects.all()
-    serializer_class = DeliveryBoySerializer  
+    serializer_class = DeliveryBoySerializer
+
+    lookup_field = "id"
+
+    def get_queryset(self):
+        return self.queryset.filter(owner=self.request.user)  
