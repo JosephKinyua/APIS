@@ -168,6 +168,17 @@ class Cart(models.Model):
     def delete_cart(self):
         self.delete()
 
+    @classmethod
+    def search_cart(cls, id):
+        return cls.objects.filter(cart__icontains=id).all()
+
+    @classmethod
+    def get_cart(cls):
+        return cls.objects.all()
+
+    def __str__(self):
+        return f'{self.amount}'
+
 class DeliveryBoy(models.Model):
     order= models.ForeignKey(Order, on_delete=models.CASCADE)
     delivery_boy = models.ForeignKey(Staff, on_delete=models.CASCADE)
