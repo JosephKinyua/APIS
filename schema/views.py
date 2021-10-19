@@ -516,10 +516,10 @@ class CartList(generics.ListCreateAPIView):
     serializer_class = CartSerializer
 
     def perform_create(self, serializer):
-        return serializer.save(user=self.request.user)
+        return serializer.save(id=self.request.user)
 
     def get_queryset(self):
-        return self.queryset.filter(user=self.request.user)
+        return self.queryset.filter(id=self.request.user)
 
 
 class CartDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -528,7 +528,7 @@ class CartDetail(generics.RetrieveUpdateDestroyAPIView):
     lookup_field = "id"
 
     def get_queryset(self):
-        return self.queryset.filter(user=self.request.user)  
+        return self.queryset.filter(id=self.request.user)  
 
 
 
