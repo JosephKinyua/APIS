@@ -122,7 +122,7 @@ class Food(models.Model):
     status = models.CharField(max_length=50, choices=STATUS)
     content_description = models.TextField()
     price = models.FloatField()
-    image = CloudinaryField('image')
+    image = CloudinaryField('image',default='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Ffood%2F&psig=AOvVaw0VgUuHvQN-B8K6F78vUMB3&ust=1634716899602000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNjbh5OB1vMCFQAAAAAdAAAAABAD')
     location = models.CharField(max_length=200, blank=True, null=True)
     num_order = models.IntegerField(default=0)
 
