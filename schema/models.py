@@ -71,7 +71,7 @@ class Order(models.Model):
         (pickup, pickup),
         (delivery, delivery),
     )
-
+    id = models.AutoField(primary_key=True)
     customer = models.ForeignKey(Customer,on_delete=models.CASCADE)
     order_timestamp = models.CharField(max_length=100, blank=True)
     delivery_timestamp = models.CharField(max_length=100, blank=True)
@@ -139,16 +139,19 @@ class Comment(models.Model):
     content = models.CharField(max_length=250)
 
 class Data(models.Model):
+    id = models.AutoField(primary_key=True)
     date = models.DateField()
     sales = models.IntegerField()
     expenses = models.IntegerField()
 
 class OrderContent(models.Model):
+    id = models.AutoField(primary_key=True)
     quantity = models.IntegerField(default=1)
     food = models.ForeignKey(Food, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
 
 class Cart(models.Model):
+    id = models.AutoField(primary_key=True)
     image = CloudinaryField('image')
     amount = models.IntegerField(default=1)
     quantity = models.IntegerField(default=1)
@@ -160,31 +163,32 @@ class DeliveryBoy(models.Model):
     delivery_boy = models.ForeignKey(Staff, on_delete=models.CASCADE)
 
 class Post(models.Model):
-  title = models.CharField(max_length=144)
-  description = models.TextField()
-  image = CloudinaryField('image')
-  posted_on = models.DateTimeField(auto_now_add=True)
-  user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete = models.CASCADE)
-  
+    id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=144)
+    description = models.TextField()
+    image = CloudinaryField('image')
+    posted_on = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete = models.CASCADE)
+    
 
-  @classmethod
-  def display_postt(cls):
-    projects = cls.objects.all().order_by('-posted_on')
-    return projects
+    @classmethod
+    def display_postt(cls):
+        projects = cls.objects.all().order_by('-posted_on')
+        return projects
 
-  def save_post(self):
-    self.save()
+    def save_post(self):
+        self.save()
 
-  def delete_post(self):
-    self.delete()
+    def delete_post(self):
+        self.delete()
 
-  @classmethod
-  def search_post(cls, title):
-    return cls.objects.filter(title__icontains=title).all()
+    @classmethod
+    def search_post(cls, title):
+        return cls.objects.filter(title__icontains=title).all()
 
-  @classmethod
-  def get_post(cls):
-    return cls.objects.all()
+    @classmethod
+    def get_post(cls):
+        return cls.objects.all()
 
-  def __str__(self):
-    return f'{self.title}'
+    def __str__(self):
+        return f'{self.title}'

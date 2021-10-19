@@ -5,7 +5,7 @@ from .models import *
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = ('title', 'description','image', 'posted_on', 'user')
+        fields = ('id','title', 'description','image', 'posted_on', 'user')
         model = Post
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,7 +24,7 @@ class StaffSerializer(serializers.ModelSerializer):
 
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
-        fields =('customer', 'order_timestamp', 'delivery_timestamp', 'payment_status', 'delivery_status', 'if_cancelled', 'total_amount', 'payment_method', 'location', 'delivery_boy')
+        fields =('id','customer', 'order_timestamp', 'delivery_timestamp', 'payment_status', 'delivery_status', 'if_cancelled', 'total_amount', 'payment_method', 'location', 'delivery_boy')
         model = Order
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -34,17 +34,17 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class DataSerializer(serializers.ModelSerializer):
     class Meta:
-        fields =('date','sales','expenses')
+        fields =('id','date','sales','expenses')
         model = Data
 
 class OrderContentSerializer(serializers.ModelSerializer):
     class Meta:
-        fields =('food','order')
+        fields =('id','food','order')
         model = OrderContent
 
 class CartSerializer(serializers.ModelSerializer):
     class Meta:
-        fields =('food','user', 'amount', 'image')
+        fields =('id','food','user', 'amount', 'image')
         model = Cart
 
 class DeliveryBoySerializer(serializers.ModelSerializer):
