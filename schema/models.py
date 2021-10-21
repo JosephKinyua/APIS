@@ -21,7 +21,7 @@ class Customer(models.Model):
     total_sale = models.IntegerField(default=0)
     
     def __str__(self):
-        return self.customer.first_name + " " + self.customer.last_name
+        return self.customer.__str__()
 
 class Staff(models.Model):
     admin = 'Admin'
@@ -42,7 +42,7 @@ class Staff(models.Model):
     role = models.CharField(max_length = 30, choices = ROLES)
     
     def __str__(self):
-        return self.staff_id.first_name + " " + self.staff_id.last_name
+        return self.staff_id
 
 class Order(models.Model):
     pending = 'Pending'
