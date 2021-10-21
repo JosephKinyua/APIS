@@ -34,6 +34,7 @@ class User(AbstractBaseUser,PermissionsMixin):
     Username and password are required. Other fields are optional.
     """
     id = models.AutoField(primary_key=True)
+    first_name = models.CharField(max_length=255,unique=False,db_index=True ) 
     username = models.CharField(max_length=255,unique=True,db_index=True ) 
     email = models.EmailField(max_length=255,unique=True,db_index=True )
     is_verified = models.BooleanField(default=True)
@@ -54,7 +55,7 @@ class User(AbstractBaseUser,PermissionsMixin):
     def __str__(self):
         return self.email
 
-
+    
     def tokens(self):
         refresh = RefreshToken.for_user(self)
         return {
