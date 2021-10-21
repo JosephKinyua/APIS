@@ -19,7 +19,8 @@ class Customer(models.Model):
     contact = models.CharField(max_length = 10)
     orders = models.IntegerField(default=0)
     total_sale = models.IntegerField(default=0)
-
+    first_name = models.CharField(max_length=250)
+    last_name = models.CharField(max_length=250)
     def __str__(self):
         return self.customer.first_name + " " + self.customer.last_name
 
@@ -40,7 +41,8 @@ class Staff(models.Model):
     email = User.email
     salary = models.IntegerField()
     role = models.CharField(max_length = 30, choices = ROLES)
-    
+    first_name = models.CharField(max_length=250)
+    last_name = models.CharField(max_length=250)
     def __str__(self):
         return self.staff_id.first_name + " " + self.staff_id.last_name
 
