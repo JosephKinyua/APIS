@@ -14,6 +14,7 @@ class Customer(models.Model):
         (pending,pending),
         (verified,verified),
     )
+    id = models.AutoField(primary_key=True)
     customer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     address = models.TextField()
     contact = models.CharField(max_length = 10)
