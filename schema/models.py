@@ -78,6 +78,17 @@ class Order(models.Model):
     location = models.CharField(max_length=200, blank=True, null=True)
     delivery_boy = models.ForeignKey(Staff,on_delete=models.CASCADE, null=True, blank=True)
 
+    def confirmOrder(self):
+        self.order_timestamp = timezone.localtime().__str__()[:19]
+        self.payment_status = self.completed
+        self.save()
+    def confirmDelivery(self):
+        self.delivery_timestamp = timezone.localtime().__str__()
+        self.delivery_status = self.completed
+        self.save()
+    def __str__(self):
+        return self.customer.__str__()
+
 class Food(models.Model):
     Tunisia = 'Tunisia Food'
     Ghana = 'Ghana Food'
