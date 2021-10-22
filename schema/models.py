@@ -14,7 +14,7 @@ class Customer(models.Model):
         (pending,pending),
         (verified,verified),
     )
-    customer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    customer_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     address = models.TextField()
     contact = models.CharField(max_length = 10)
     orders = models.IntegerField(default=0)

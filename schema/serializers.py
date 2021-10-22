@@ -9,7 +9,7 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
-        fields =('customer','address','contact','orders','total_sale')
+        fields =('customer_id','address','contact','orders','total_sale')
         model = Customer
 
 class FoodSerializer(serializers.ModelSerializer):
