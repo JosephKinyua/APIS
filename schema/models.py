@@ -65,7 +65,7 @@ class Order(models.Model):
         (pickup, pickup),
         (delivery, delivery),
     )
-    customer = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer,on_delete=models.CASCADE)
     order_timestamp = models.CharField(max_length=100, blank=True)
     delivery_timestamp = models.CharField(max_length=100, blank=True)
     payment_status = models.CharField(max_length = 100, choices = STATUS)
