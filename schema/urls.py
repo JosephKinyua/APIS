@@ -30,6 +30,8 @@ urlpatterns = [
     path('<int:pk>/', DataDetail.as_view()),
     path('data', DataList.as_view()),
 
+    path('<int:pk>/', DeliveryBoyDetail.as_view()),
+    path('deliveryboy', DeliveryBoyList.as_view()),
 
     path('<int:pk>/', OrderContentDetail.as_view()),
     path('ordercontent', OrderContentList.as_view()),
