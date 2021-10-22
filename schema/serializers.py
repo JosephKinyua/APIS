@@ -47,7 +47,3 @@ class CartSerializer(serializers.ModelSerializer):
         fields =('id','food','user', 'amount', 'image')
         model = Cart
 
-class DeliveryBoySerializer(serializers.ModelSerializer):
-    class Meta:
-        fields =('order','delivery_boy')
-        model = DeliveryBoy  

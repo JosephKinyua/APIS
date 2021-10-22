@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.utils import timezone
-from .models import Customer, Comment, Order, Food, Data, Cart, OrderContent, Staff, DeliveryBoy
+from .models import *
 from . forms import PostForm
 from django.shortcuts import render
 from rest_framework import generics
@@ -308,20 +308,7 @@ def my_orders(request):
     orders = Order.objects.filter(customer=customer)
     return render(request, 'orders.html', {'orders': orders})
 
-@login_required
-def delivery_boy(request):
-    user = User.objects.get(id=request.user.id)
-    try:
-        customer = Customer.objects.get(customer=user)
-    except Customer.DoesNotExist:
-        staff = Staff.objects.get(staff_id=user)
-        if staff is None or staff.role != 'Delivery Boy':
-            redirect('booking:index')
-        else:
-            orders = DeliveryBoy.objects.filter(delivery_boy=staff)
-            return render(request, 'delivery_boy.html', {'orders':orders})
-    
-    return redirect('booking:index')
+
         
 @login_required
 def post(request):
@@ -384,15 +371,7 @@ class CartList(generics.ListCreateAPIView):
     serializer_class = CartSerializer
   
 
-class DeliveryBoyList(generics.ListCreateAPIView):
-    queryset = DeliveryBoy.objects.all()
-    serializer_class = DeliveryBoySerializer
 
-
-# Details---------------------------------------------------------------------------------------------
-class DeliveryBoyDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = DeliveryBoy.objects.all()
-    serializer_class = DeliveryBoySerializer  
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()

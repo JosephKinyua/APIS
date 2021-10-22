@@ -34,7 +34,6 @@ class Staff(models.Model):
         (chef,chef),
         (deliveryboy,deliveryboy),
     )
-    
     staff_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     address = models.TextField()
     contact = models.CharField(max_length = 10)
@@ -66,7 +65,6 @@ class Order(models.Model):
         (pickup, pickup),
         (delivery, delivery),
     )
-    id= models.AutoField(primary_key=True)
     customer = models.ForeignKey(Customer,on_delete=models.CASCADE)
     order_timestamp = models.CharField(max_length=100, blank=True)
     delivery_timestamp = models.CharField(max_length=100, blank=True)
@@ -76,7 +74,7 @@ class Order(models.Model):
     total_amount = models.IntegerField()
     payment_method = models.CharField(max_length = 100, choices = PAYMENT)
     location = models.CharField(max_length=200, blank=True, null=True)
-    delivery_boy = models.ForeignKey(Staff,on_delete=models.CASCADE, null=True, blank=True)
+    
 
     def confirmOrder(self):
         self.order_timestamp = timezone.localtime().__str__()[:19]
@@ -152,9 +150,7 @@ class Cart(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 
-class DeliveryBoy(models.Model):
-    order= models.ForeignKey(Order, on_delete=models.CASCADE)
-    delivery_boy = models.ForeignKey(Staff, on_delete=models.CASCADE)
+
 
 class Post(models.Model):
     id = models.AutoField(primary_key=True)
