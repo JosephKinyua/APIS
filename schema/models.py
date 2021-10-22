@@ -9,19 +9,20 @@ from django.utils import timezone
 class Customer(models.Model):
     pending = 'Pending'
     verified = 'Verified'
-
     STATUS = (
         (pending,pending),
         (verified,verified),
     )
-    customer_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    customer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     address = models.TextField()
     contact = models.CharField(max_length = 10)
     orders = models.IntegerField(default=0)
     total_sale = models.IntegerField(default=0)
-    
+
     def __str__(self):
-        return self.customer.__str__()
+        return self.customer.first_name + " " + self.customer.last_name
+    
+  
 
 class Staff(models.Model):
     admin = 'Admin'
@@ -47,25 +48,20 @@ class Staff(models.Model):
 class Order(models.Model):
     pending = 'Pending'
     completed = 'Completed'
-
     STATUS = (
         (pending,pending),
         (completed,completed),
     )
-
     cod = 'Cash On Delivery'
     card = 'Card Payment'
     upi = 'UPI Payment'
-
     PAYMENT = (
         (cod,cod),
         (card,card),
         (upi,upi),
     )
-
     pickup = 'PickUp'
     delivery = 'Delivery'
-
     TYPE = (
         (pickup, pickup),
         (delivery, delivery),
@@ -80,19 +76,6 @@ class Order(models.Model):
     payment_method = models.CharField(max_length = 100, choices = PAYMENT)
     location = models.CharField(max_length=200, blank=True, null=True)
     delivery_boy = models.ForeignKey(Staff,on_delete=models.CASCADE, null=True, blank=True)
-
-    def confirmOrder(self):
-        self.order_timestamp = timezone.localtime().__str__()[:19]
-        self.payment_status = self.completed
-        self.save()
-
-    def confirmDelivery(self):
-        self.delivery_timestamp = timezone.localtime().__str__()[:19]
-        self.delivery_status = self.completed
-        self.save()
-    
-    def __str__(self):
-        return self.customer.__str__()
 
 class Food(models.Model):
     Tunisia = 'Tunisia Food'
